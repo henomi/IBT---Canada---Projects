@@ -1,0 +1,25 @@
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, sans-serif;
+}
+
+
+.flight-table th {
+  background-color: #006B3F; /* Ethiopian Dark Green */
+  color: #FFFFFF;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 18px;
+}
+
+.flight-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #E2E8F0;
+  color: #1A202C;
+}
+
+
+.flight-table tbody tr:nth-child(even) {
+  background-color: #F8FAFC;
+}

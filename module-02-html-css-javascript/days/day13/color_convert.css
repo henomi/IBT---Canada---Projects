@@ -1,0 +1,10 @@
+:root {
+ 
+  --gold: hsl(46, 64%, 52%);
+  --gold-hover: hsl(46, 64%, 64%); 
+
+  --crimson: hsl(0, 100%, 27%);
+  --crimson-hover: hsl(0, 100%, 39%); 
+
+  --charcoal: hsl(218, 23%, 23%);
+  --charcoal-hover: hsl(218, 23%, 35%);}

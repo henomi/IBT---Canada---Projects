@@ -1,0 +1,7 @@
+p { color: red; }            
+.text-style { color: blue; }  
+#hero-text { color: green; }  
+/* green or the id selector wins 
+    element  (0,0,1)
+    class    (0,1,0)
+    id       (1,0,0)    */   

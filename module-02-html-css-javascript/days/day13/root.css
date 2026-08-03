@@ -1,0 +1,16 @@
+:root {
+  --primary-color: hsl(212, 68%, 33%);
+  --text-light: hsl(0, 0%, 100%);
+  --spacing-btn: 12px 24px;
+  --font-primary: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+.btn-primary {
+  font-family: var(--font-primary);
+  color: var(--text-light);
+  background-color: var(--primary-color);
+  padding: var(--spacing-btn);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+/* Unfixed (352px wide) */
+.card-content-box {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 24px;
+  border: 2px solid #ccc;
+}
+
+/* Fixed (Exactly 300px wide) */
+.card-border-box {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 24px;
+  border: 2px solid #ccc;
+}
