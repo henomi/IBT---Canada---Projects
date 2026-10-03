@@ -93,11 +93,12 @@ const menus = [
 
 function savecart(){
     localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
     updateCartDisplay();
 }
 
 cart = JSON.parse(localStorage.getItem('cart')) || [];
-updateCartDisplay();
+
 
 function addToCart(menuId) {
     const menuItem = menus.find(menu => menu.id === menuId);
@@ -112,12 +113,9 @@ function addToCart(menuId) {
     }
     savecart();
     
+    
 };
 
-function updateCartDisplay() {
-    const cartItems = document.getElementById('cart-count');
-    cartItems.innerHTML = cart.map(item = `<div class="cart-item"> <h3>${item.name}</h3> <p>Price: ${item.price} ETB</p> <div class="quantity-controls"> <button class="quantity-button">-</button> <span class="quantity">${item.quantity}</span> <button class="quantity-button">+</button> </div> <button class="remove-button">Remove</button> </div>`).join('');
-};
 
 const container = document.querySelector('.menu');
 
@@ -130,6 +128,7 @@ menus.forEach(menu => {
                 <p class="price">Price: ${menu.price} ETB</p>
                 <button class="cart-button" onclick="addToCart(${menu.id})">Add to Cart</button>
             </div>`;});
+            
 
 
 function filterMenu(category) {
@@ -151,41 +150,53 @@ function displayCart() {
     cartItem.innerHTML = '';
     cart.forEach(menu => {
         cartItem.innerHTML += `
-        <div class="cart-item">
-            <div class="cart-item-details">
-                <div class="cart-item-info">
-                    <img src="${menu.image}" alt="${menu.name}" class="cart-item-img">
+            <div class="cart-item">
+                <div class="cart-item-details">
+                    <div class="cart-item-info">
+                        <img src="${menu.image}" alt="${menu.name}" class="cart-item-img">
+                    </div>
+                    <div>
+                        <h4>${menu.name}</h4>
+                        <p>Price: ${menu.price} ETB</p>
+                    </div>
+                    
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="quantity-button" onclick="decreaseQuantity(${menu.id})">-</button>
+                                <span class="quantity">${menu.quantity}</span>
+                            <button class="quantity-button" onclick="increaseQuantity(${menu.id})">+</button>
+                        </div>
+                    <button class="remove-button" onclick="removeFromCart(${menu.id})">Remove</button> 
                 </div>
-                <div>
-                    <h4>${menu.name}</h4>
-                    <p>Price: ${menu.price} ETB</p>
-                </div>
-                
-            </div>
-            <div class="cart-item-actions">
-                <div class="quantity-controls">
-                <button class="quantity-button" onclick="decreaseQuantity(${menu.id})">-</button>
-                    <span class="quantity">${menu.quantity}</span>
-                    <button class="quantity-button" onclick="increaseQuantity(${menu.id})">+</button>
-                </div>
-            <button class="remove-button" onclick="removeFromCart(${menu.id})">Remove</button>
-            
-            </div>
-        </div>`;});
+                <button class="checkout-button" onclick="checkOut(checkOut())">Check Out</button>
+            </div>`;});
+
+            // calculate total price
+            const total = totalPrice();
+            document.getElementById('total-price').textContent = `Total Price: ${total} ETB`;
+
 }
 
 const cartButton = document.getElementById('cart-button');
 cartButton.addEventListener('click', () => {
     const cartModal = document.getElementById('cart-modal');
     cartModal.style.display = 'flex';
-    displayCart();
+    savecart();
 });
+
+function updateCartDisplay(){
+    const cartCount = document.getElementById('cart-count');
+    const totalQuantity = cart.reduce((total, item) => {
+        return total + item.quantity;
+    }, 0);
+    cartCount.textContent = totalQuantity;
+}
 
 function removeFromCart(menuId) {
     cart = cart.filter(menu => menu.id !== menuId);
     localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-    displayCart();
+    savecart();
 }
 const cartModal = document.getElementById('cart-modal');
 cartModal.addEventListener('click', (e) => {
@@ -199,8 +210,7 @@ function increaseQuantity(menuId) {
     if (menuItem) {
         menuItem.quantity++;
         localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartDisplay();
-        displayCart();
+        
     }
     savecart();
 }
@@ -213,23 +223,21 @@ function decreaseQuantity(menuId) {
             removeFromCart(menuId);
         } else {
             localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartDisplay();
-            displayCart();
+            
         }
     }
     savecart();
 }
 
 
-function totalPrice (){
+function totalPrice (){{
     return cart.reduce((total, item) => {
         return total + item.price * item.quantity;
-    }, 0);
+    }, 0);}
     
 }
-const total = totalPrice();
-    document.getElementById('total-price').textContent = `Total Price: ${total} ETB`;
-    // savecart();
+
+    
 
 
 const detailMenuModal = document.getElementById('detail-menu-modal');
@@ -258,3 +266,27 @@ closeMenu.addEventListener('click', (e) => {
     }
 });
 
+const checkoutModal = document.getElementById('checkout-modal');
+function checkOut() {
+    checkoutModal.style.display = 'flex';}
+
+    addEventListener('click', (e) => {
+        if (e.target.classList.contains('checkout-button')) {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.style.display = 'none';
+            checkOut();
+        }
+    });
+
+addEventListener('click', (e) => {
+    if (e.target.classList.contains('continue-button')) {
+        const cartModal = document.getElementById('cart-modal');
+        cartModal.style.display = 'none';
+        const checkoutModal = document.getElementById('checkout-modal');
+        checkoutModal.style.display = 'none';
+    }
+});
+
+
+
+savecart();
