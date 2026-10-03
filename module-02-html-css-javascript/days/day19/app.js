@@ -5,6 +5,8 @@ const list = document.querySelector("#list");
 
 const items = [];
 
+
+
 function render() {
     list.innerHTML = "";
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-container">
+        <h1 class="logo">Addis <span>Eatery</span></h1>
+        <nav class="nav">
+            <ul class="nav-list"
+            >
+                <li><a href="#home"> <i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#menu"> <i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="#about"> <i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact "> <i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+        <button id="cart-button" class="cart-btn"><i class="fas fa-shopping-cart"></i> Cart
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </header>
+    <main>
+        <section id="home" class="body">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="hero-text">Welcome,</span> </br>
+                        <span class="hero-text-2">Addis Eatery</span>
+                    <p class="hero-subtext">Experience the authentic taste of Ethiopia</p>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/hero-food.jpg" alt="Hero Image" class="hero-img">
+                </div>
+            </div>
+        </section>
+        <div class="search-container">
+        <form action="" id="search-form">
+            <input type="text" placeholder="Search for dishes..." id="search-input">
+        </form>
+        </div>
+        <section id="menu" class="menu">
+            <!-- my menu items will be dynamically inserted here -->
+        </section>
+        <section id="about" class="about">
+            <div class="overlay">
+                <h2>About Addis Eatery</h2>
+                <p>At Addis Eatery, we are passionate about bringing the authentic flavors of Ethiopia to your table. Our chefs use traditional recipes and fresh ingredients to create a dining experience that is both delicious and memorable. Whether you're a fan of spicy dishes or prefer milder flavors, our menu has something for everyone. Join us and discover the rich culinary heritage of Ethiopia!</p>
+            </div>
+            <img src="assets/about.jpg" alt="About Image" class="about-img">
+        </section>
+    </main>
+    <footer id="contact" class="footer">
+        <section class="footer-content"> 
+            <div class="footer-logo"><span>Addis</span> Eatery</div>
+            <div>
+                <div>Contact us <div><ul><li><i class="fas fa-envelope"></i> 😛yom@addiseatery.com</li>
+                    <li><i class="fas fa-phone"></i>+251 975402480</li>
+                </ul></div></div> 
+            </div>
+            <div>
+                <span>Follow us</span>
+                <div><ul><li><i class="fab fa-facebook"></i> Facebook</li>
+                    <li><i class="fab fa-twitter"></i> Twitter</li>
+                    <li><i class="fab fa-instagram"></i> Instagram</li>
+                    <li><i class="fab fa-telegram"></i> Telegram</li>
+                </ul></div>
+            </div>
+        
+        </section>
+        <hr class="footer-line">
+        <p class="copy-right">&copy; 2026 Addis Eatery. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+
+            <h2>Your Cart</h2>
+            <ul id="cart-items" class="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </ul>
+            <p id="total-price" class="total-price"></p>
+        </div>
+    </div>
+
+    <div id="detail-menu-modal" class="detail-menu-modal">
+        <div class="detail-menu-content">
+            <h2 id="detail-menu-name"></h2>
+            <img id="detail-menu-image" src="" alt="Menu Item Image" class="detail-menu-img">
+            <p id="detail-menu-description"></p>
+            <p id="detail-menu-price"></p>
+            <button id="add-to-cart-button" class="cart-button">Add to Cart</button>
+        </div>
+    </div> 
+
+    <script src="script.js"></script>
+
+</body>
+</html>
