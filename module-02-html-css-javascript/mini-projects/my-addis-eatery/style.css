@@ -402,13 +402,17 @@
     font-size: 16px;
     color: #333;
 }
-.checkout-content button{
+.checkout-button{
     background-color: #007BFF;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
+}
+.checkout-button:hover{
+    background-color: #012954;
 }
 
 .checkout-info{
@@ -435,6 +439,18 @@ form *, form *::before, form *::after{
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #77b7fa;
+}
+.submit-button{
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.submit-button:hover{
+    background-color: #012954;
 }
 .success-modal{
     position: fixed;
@@ -474,4 +490,7 @@ form *, form *::before, form *::after{
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+.success-content button:hover{
+    background-color: #012954;
 }
