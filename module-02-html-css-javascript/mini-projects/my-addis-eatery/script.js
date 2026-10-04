@@ -1,95 +1,20 @@
-const menus = [
-    {
-        id: 1,
-        name: "Doro Wat",
-        price: 240,
-        image: "./assets/doro-wat.jpg",
-        spicy: true,
-        category: "main",
-        description: "Doro Wat is a traditional Ethiopian chicken stew made with chicken, onions, garlic, ginger, and a blend of spices. It is typically served with injera, a type of Ethiopian flatbread."
-    },
-    {
-        id: 2,
-        name: "Shiro",
-        price: 120,
-        image: "./assets/shiro.jpg",
-        spicy: false,
-        category: "fast-food",
-        description: "Shiro is a popular Ethiopian dish made from ground chickpeas or lentils, cooked with spices and served as a thick stew. It is often enjoyed with injera or bread."    
-    },
-    {
-        id: 3,
-        name: "Kitfo",
-        price: 320,
-        image: "./assets/kitfo.jpg",
-        spicy: true,
-        category: "main",
-        description: "Kitfo is a traditional Ethiopian dish made from finely chopped beef, seasoned with spices and served with injera."
-    },
-    {
-        id: 4,
-        name: "firfir",
-        price: 180,
-        image: "./assets/firfr.jpg",
-        spicy: true,
-        category: "fast-food",
-        description: "Firfir is a traditional Ethiopian dish made from a blend of spices and served as a thick stew."
-    },
-    {
-        id: 5,
-        name: "Tibs",
-        price: 280,
-        image: "./assets/tibs.jpg",
-        spicy: false,
-        category: "main",
-        description: "Tibs is a traditional Ethiopian dish made from seasoned meat, typically beef or lamb, and served with injera."
-    },
-    {
-        id: 6,
-        name: "Gored Gored",
-        price: 300,
-        image: "./assets/gored-gored.jpg",
-        spicy: true,
-        category: "main",
-        description: "Gored Gored is a traditional Ethiopian dish made from a blend of spices and served as a thick stew."
-    },
-    {
-        id: 7,
-        name: "Dulet",
-        price: 200,
-        image: "./assets/dulet.jpg",
-        spicy: false,
-        category: "main",
-        description: "Dulet is a traditional Ethiopian dish made from a blend of spices and served as a thick stew."
-    },
-    {
-        id: 8,
-        name: "Chechebsa be kibe",
-        price: 150,
-        image: "./assets/chechebsa.jpg",
-        spicy: true,
-        category: "main",
-        description: "Chechebsa be kibe is a traditional Ethiopian dish made from a blend of spices and served as a thick stew."
-    },
-    {
-        id: 9,
-        name: "beyaynetu",
-        price: 350,
-        image: "./assets/beyaynet.jpg",
-        spicy: true,
-        category: "main && fast-food",
-        description: "Beyaynetu is a traditional Ethiopian dish made from a blend of spices and served as a thick stew."
-    },
-    {
-        id: 10,
-        name: "Injera",
-        price: 100,
-        image: "./assets/injera.jpg",
-        spicy: false,
-        category: "extra",
-        description: "Injera is a traditional Ethiopian flatbread made from teff flour and served with various stews."
+let menus = [];
+
+
+async function getMenus() {
+    try {
+    const response = await fetch('./data/menus.json');
+     menus = await response.json();
+    displayMenu(menus);
+
+    } catch (error) {
+        console.error('Error fetching menus:', error);
     }
-];
+}
+
+
+
+
 
 function savecart(){
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -118,7 +43,7 @@ function addToCart(menuId) {
 
 
 const container = document.querySelector('.menu');
-
+function displayMenu(menus) {
 menus.forEach(menu => {
     container.innerHTML += `
     <div class="card">
@@ -127,23 +52,39 @@ menus.forEach(menu => {
                 <p>${menu.description ? menu.description.substring(0, 30) + '...' : 'No description available.'}</p>
                 <p class="price">Price: ${menu.price} ETB</p>
                 <button class="cart-button" onclick="addToCart(${menu.id})">Add to Cart</button>
+            </div>`;});}
+
+
+
+
+
+function filterMenu() {
+    const searchInputForm = document.getElementById("search-input");
+    return menus.filter(menu => menu.name.trim().toLowerCase().includes(searchInputForm.value.toLowerCase()));
+
+
+}
+
+function displayMenu(filteredMenus) {
+    const menuContainer = document.querySelector('.menu');
+    menuContainer.innerHTML = '';
+    filteredMenus.forEach(menu => {
+        menuContainer.innerHTML += `
+        <div class="card">
+                <img src="${menu.image}" alt="${menu.name}" class="card-img">
+                <h3>${menu.name}</h3>
+                <p>${menu.description ? menu.description.substring(0, 30) + '...' : 'No description available.'}</p>
+                <p class="price">Price: ${menu.price} ETB</p>
+                <button class="cart-button" onclick="addToCart(${menu.id})">Add to Cart</button>
             </div>`;});
             
-
-
-function filterMenu(category) {
-    const filteredMenus = category === 'all' ? menus : menus.filter(menu => menu.category === category);
-    container.innerHTML = '';
-    filteredMenus.forEach(menu => {
-        container.innerHTML += `
-        <div class="card">
-                    <img src="${menu.image}" alt="${menu.name}" class="card-img">
-                    <h3>${menu.name}</h3>
-                    <p>${menu.description}</p>
-                    <p class="price">Price: ${menu.price} ETB</p>
-                    <button class="cart-button" onclick="addToCart(${menu.id})">Add to Cart</button>
-                </div>`;});
 }
+
+const searchFormInput = document.getElementById("search-form");
+searchFormInput.addEventListener("input", () => {
+    const filteredMenus = filterMenu();
+    displayMenu(filteredMenus);
+}); 
 
 function displayCart() {
     const cartItem = document.getElementById('cart-items');
@@ -278,6 +219,33 @@ function checkOut() {
         }
     });
 
+const checkoutInfo = document.getElementById('checkout-info');
+checkoutInfo.innerHTML = `
+<div class="checkout-info">
+    <form action="" id="checkout-form">
+        <div class="checkout-info-form">
+            
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            
+        </div>
+        <div class="checkout-info-form">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" placeholder="Enter your state">
+                <label for="zip">Zip:</label>
+                <input type="text" id="zip" name="zip" placeholder="Enter your zip code">
+        </div>
+    </form>
+</div>`;
+
 addEventListener('click', (e) => {
     if (e.target.classList.contains('continue-button')) {
         const cartModal = document.getElementById('cart-modal');
@@ -288,5 +256,5 @@ addEventListener('click', (e) => {
 });
 
 
-
+getMenus();
 savecart();
