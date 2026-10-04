@@ -82,9 +82,16 @@ function displayMenu(filteredMenus) {
 
 const searchFormInput = document.getElementById("search-form");
 searchFormInput.addEventListener("input", () => {
-    const filteredMenus = filterMenu();
-    displayMenu(filteredMenus);
-}); 
+    displayMenu(filterMenu());
+});
+
+
+searchFormInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+    }
+
+});
 
 function displayCart() {
     const cartItem = document.getElementById('cart-items');
@@ -110,7 +117,6 @@ function displayCart() {
                         </div>
                     <button class="remove-button" onclick="removeFromCart(${menu.id})">Remove</button> 
                 </div>
-                <button class="checkout-button" onclick="checkOut(checkOut())">Check Out</button>
             </div>`;});
 
             // calculate total price
@@ -231,27 +237,26 @@ checkoutInfo.innerHTML = `
                 <input type="email" id="email" name="email" placeholder="Enter your email">
                 <label for="phone">Phone:</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-            
-        </div>
-        <div class="checkout-info-form">
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" placeholder="Enter your address">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" placeholder="Enter your city">
-                <label for="state">State:</label>
-                <input type="text" id="state" name="state" placeholder="Enter your state">
-                <label for="zip">Zip:</label>
-                <input type="text" id="zip" name="zip" placeholder="Enter your zip code">
         </div>
+        <button class="submit-button">Submit</button>
     </form>
 </div>`;
 
 addEventListener('click', (e) => {
-    if (e.target.classList.contains('continue-button')) {
-        const cartModal = document.getElementById('cart-modal');
-        cartModal.style.display = 'none';
+    if (e.target.classList.contains('submit-button')) {
+        const successModal = document.getElementById('success-modal');
+        successModal.style.display = 'flex';
         const checkoutModal = document.getElementById('checkout-modal');
         checkoutModal.style.display = 'none';
+    }});
+
+addEventListener('click', (e) => {
+    if (e.target.classList.contains('continue-button')) {
+        const cartModal = document.getElementById('success-modal');
+        cartModal.style.display = 'none';
+        
     }
 });
 

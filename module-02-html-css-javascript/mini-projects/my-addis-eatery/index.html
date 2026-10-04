@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Addis Eatery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css">
@@ -20,7 +20,7 @@
                 <li><a href="#contact "> <i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
-        <button id="cart-button" class="cart-btn"><i class="fas fa-shopping-cart"></i> Cart
+        <button id="cart-button" class="cart-btn"><i class="fas fa-shopping-cart"></i>
             <span id="cart-count" class="cart-count">0</span>
         </button>
     </header>
@@ -44,7 +44,7 @@
         </form>
         </div>
         <section id="menu" class="menu">
-            <!-- my menu items will be dynamically inserted here -->
+            
         </section>
         <section id="about" class="about">
             <div class="overlay">
@@ -58,16 +58,17 @@
         <section class="footer-content"> 
             <div class="footer-logo"><span>Addis</span> Eatery</div>
             <div>
-                <div>Contact us <div><ul><li><i class="fas fa-envelope"></i> 😛yom@addiseatery.com</li>
+                <div>Contact us <div><ul><li><i class="fas fa-envelope"></i> info@addiseatery.com</li>
                     <li><i class="fas fa-phone"></i>+251 975402480</li>
                 </ul></div></div> 
             </div>
             <div>
                 <span>Follow us</span>
-                <div><ul><li><i class="fab fa-facebook"></i> Facebook</li>
-                    <li><i class="fab fa-twitter"></i> Twitter</li>
-                    <li><i class="fab fa-instagram"></i> Instagram</li>
-                    <li><i class="fab fa-telegram"></i> Telegram</li>
+                <div><ul>
+                    <li><a href="https://www.facebook.com/addiseatery/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/addiseatery" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/addiseatery/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://t.me/addiseatery" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
                 </ul></div>
             </div>
         
@@ -81,9 +82,11 @@
 
             <h2>Your Cart</h2>
             <ul id="cart-items" class="cart-items">
-                <!-- Cart items will be dynamically inserted here -->
+                
             </ul>
              <p id="total-price" class="total-price"></p>
+            <button class="checkout-button" onclick="checkOut(checkOut())">Check Out</button>
+
         </div>
     </div>
 
@@ -101,6 +104,11 @@
         <div class="checkout-content">
             <h2>Check Out</h2>
             <div id="checkout-info" class="checkout-info"></div>
+        </div>
+    </div>
+    <div id="success-modal" class="success-modal">
+        <div class="success-content">
+            <h2>Success</h2>
             <p>Your order has been placed successfully.</p>
             <button id="checkout-button" class="continue-button">Continue Shopping</button>
         </div>
