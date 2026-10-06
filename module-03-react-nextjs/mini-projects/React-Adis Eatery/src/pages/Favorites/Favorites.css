@@ -1,0 +1,294 @@
+.favorites-page {
+  min-height: 70vh;
+}
+
+/* 
+   HEADING
+ */
+
+.favorites-heading {
+  padding: 80px 25px 70px;
+  text-align: center;
+  background: #f7f5f0;
+}
+
+.favorites-heading p {
+  margin-bottom: 12px;
+  color: #b8860b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.favorites-heading h1 {
+  margin: 0 0 15px;
+  color: #222;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.1;
+}
+
+.favorites-heading span {
+  color: #777;
+  font-size: 16px;
+}
+
+/* 
+   CONTAINER
+ */
+
+.favorites-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 55px 25px 80px;
+}
+
+.favorites-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.favorites-top p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.favorites-top strong {
+  color: #222;
+}
+
+.browse-menu-link {
+  color: #b8860b;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.browse-menu-link:hover {
+  color: #222;
+}
+
+/* 
+   FAVORITES GRID
+ */
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.favorite-card {
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+   IMAGE
+ */
+
+.favorite-image {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+}
+
+.favorite-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.favorite-card:hover .favorite-image img {
+  transform: scale(1.05);
+}
+
+.favorite-remove {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: white;
+  color: #c62828;
+
+  font-size: 20px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  transition: 0.2s ease;
+}
+
+.favorite-remove:hover {
+  transform: scale(1.08);
+}
+
+/* 
+   CONTENT
+ */
+
+.favorite-content {
+  padding: 22px;
+}
+
+.favorite-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.favorite-title h3 {
+  margin: 0;
+  color: #222;
+  font-size: 20px;
+}
+
+.favorite-title span {
+  flex-shrink: 0;
+  color: #b8860b;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.favorite-category {
+  margin: 5px 0 12px;
+  color: #999;
+  font-size: 12px;
+}
+
+.favorite-description {
+  min-height: 48px;
+  margin: 0 0 20px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.favorite-cart-button {
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #222;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.favorite-cart-button:hover {
+  background: #b8860b;
+}
+
+/* 
+   EMPTY STATE
+ */
+
+.empty-favorites {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 70px 25px 100px;
+  text-align: center;
+}
+
+.empty-favorites-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 25px;
+
+  border-radius: 50%;
+  background: #f7f5f0;
+
+  color: #b8860b;
+  font-size: 45px;
+}
+
+.empty-favorites h2 {
+  margin-bottom: 10px;
+  font-family: Georgia, serif;
+  font-size: 28px;
+}
+
+.empty-favorites p {
+  margin-bottom: 25px;
+  color: #777;
+}
+
+.favorites-menu-button {
+  display: inline-block;
+  padding: 13px 24px;
+
+  border-radius: 7px;
+  background: #222;
+
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.favorites-menu-button:hover {
+  background: #b8860b;
+}
+
+/* 
+   RESPONSIVE
+ */
+
+@media (max-width: 900px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .favorites-heading {
+    padding: 60px 20px 50px;
+  }
+
+  .favorites-container {
+    padding: 40px 18px 60px;
+  }
+
+  .favorites-top {
+    align-items: flex-start;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorite-image {
+    height: 240px;
+  }
+}

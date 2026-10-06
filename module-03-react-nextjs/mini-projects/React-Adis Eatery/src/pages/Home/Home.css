@@ -1,0 +1,447 @@
+.home {
+  width: 100%;
+}
+
+
+/*
+   HERO
+
+ */
+
+.hero {
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 8%;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78),
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.15)
+    ),
+    url("/images/hero-food.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+}
+
+
+.hero-content {
+  max-width: 650px;
+}
+
+
+.hero-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+
+.hero h1 {
+  font-size: clamp(45px, 6vw, 82px);
+  line-height: 1;
+  margin: 0 0 25px;
+}
+
+
+.hero h1 span {
+  font-style: italic;
+}
+
+
+.hero-description {
+  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+
+/*
+   BUTTONS
+
+ */
+
+.primary-button,
+.secondary-button {
+  display: inline-block;
+
+  padding: 14px 25px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+
+.primary-button {
+  background: white;
+  color: black;
+}
+
+
+.primary-button:hover {
+  transform: translateY(-3px);
+}
+
+
+.secondary-button {
+  border: 1px solid white;
+  color: white;
+}
+
+
+.secondary-button:hover {
+  background: white;
+  color: black;
+}
+
+
+/*
+   SECTION HEADING
+
+ */
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+.section-heading p,
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+
+.section-heading h2 {
+  font-size: clamp(32px, 4vw, 50px);
+  margin: 10px 0;
+}
+
+
+.section-heading span {
+  color: #666;
+}
+
+
+/*
+   FEATURED
+
+ */
+
+.featured {
+  padding: 100px 8%;
+}
+
+
+.featured-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.featured-card {
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+  transition: 0.3s;
+}
+
+
+.featured-card:hover {
+  transform: translateY(-8px);
+}
+
+
+.food-image {
+  height: 260px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+.food-one {
+  background-image: url("/images/doro-wat.jpg");
+}
+
+
+.food-two {
+  background-image: url("/images/kitfo.jpg");
+}
+
+
+.food-three {
+  background-image: url("/images/tibs.jpg");
+}
+
+
+.featured-info {
+  padding: 25px;
+}
+
+
+.featured-info h3 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+
+.featured-info p {
+  color: #666;
+  line-height: 1.6;
+}
+
+
+.featured-info strong {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+
+.view-menu {
+  display: block;
+
+  width: fit-content;
+
+  margin: 40px auto 0;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  font-weight: 600;
+}
+
+
+/*
+   ABOUT PREVIEW
+
+ */
+
+.about-preview {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 550px;
+}
+
+
+.about-image {
+  background:
+    url("/images/about-food.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+.about-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 80px;
+}
+
+
+.about-content h2 {
+  font-size: clamp(35px, 4vw, 55px);
+
+  line-height: 1.1;
+
+  margin: 15px 0 25px;
+}
+
+
+.about-content p {
+  max-width: 550px;
+
+  line-height: 1.8;
+
+  color: #666;
+}
+
+
+.text-link {
+  margin-top: 20px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  font-weight: 600;
+}
+
+
+/*
+   WHY US
+
+ */
+
+.why-us {
+  padding: 100px 8%;
+}
+
+
+.features {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 50px;
+
+  text-align: center;
+}
+
+
+.feature-icon {
+  font-size: 40px;
+
+  margin-bottom: 20px;
+}
+
+
+.feature h3 {
+  font-size: 22px;
+}
+
+
+.feature p {
+  color: #666;
+
+  line-height: 1.7;
+
+  max-width: 300px;
+
+  margin: auto;
+}
+
+
+/*
+   CTA
+
+ */
+
+.home-cta {
+  padding: 100px 8%;
+
+  text-align: center;
+
+  background: #171717;
+
+  color: white;
+}
+
+
+.home-cta p {
+  letter-spacing: 3px;
+
+  font-size: 12px;
+}
+
+
+.home-cta h2 {
+  font-size: clamp(35px, 5vw, 60px);
+
+  max-width: 700px;
+
+  margin: 20px auto 35px;
+}
+
+
+/*
+   RESPONSIVE
+
+ */
+
+@media (max-width: 900px) {
+
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+  .about-preview {
+    grid-template-columns: 1fr;
+  }
+
+
+  .about-image {
+    min-height: 400px;
+  }
+
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 80vh;
+
+    padding: 60px 6%;
+  }
+
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+
+  .featured {
+    padding: 70px 6%;
+  }
+
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .about-content {
+    padding: 60px 6%;
+  }
+
+
+  .why-us {
+    padding: 70px 6%;
+  }
+
+}
