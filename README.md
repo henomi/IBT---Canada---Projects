@@ -16,12 +16,5 @@ This repository is used to store all of your assignments, exercises, mini projec
 - module-08-software-architecture
 - module-09-market-ready-sprint
 
-## Student Responsibilities
-
-- Complete assignments on time.
-- Commit your work frequently.
-- Write meaningful commit messages.
-- Push your work after every class.
-- Do not share your repository with other students.
 
 Happy coding!
