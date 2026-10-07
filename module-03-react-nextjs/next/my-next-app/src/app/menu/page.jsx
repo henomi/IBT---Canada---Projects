@@ -1,9 +1,12 @@
 import React from 'react'
+import DishList from '@/components/Menu/DishList';
 
-const Menu = () => {
+async function Menu({menu}) {
   return (
-    <div>Menu</div>
-  )
+    <main>
+      <DishList dishes={menu} />
+    </main>
+  );
 }
 
 export default Menu;
