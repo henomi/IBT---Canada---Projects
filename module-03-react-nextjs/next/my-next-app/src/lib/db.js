@@ -43,6 +43,8 @@ const mockDishes = [
   },
 ];
 
+// export default mockDishes;
+
 // In-memory orders store
 const mockOrders = [];
 
