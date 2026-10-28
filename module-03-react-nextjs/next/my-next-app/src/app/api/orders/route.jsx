@@ -1,51 +1,53 @@
-import { db, createOrder } from "@/lib/db";
+import { NextResponse } from "next/server";
+import { orderSchema } from "@/lib/schema";
+import { getDish, createOrder } from "@/lib/db";
 
-export async function POST(req) {
-    try {
-        const body = await req.json();
-        const { dishes } = await body;
-        if (!Array.isArray(dishes) || dishes.length === 0) {
-            return Response.json
-            ({message: "your cart is empty"}, { status: 400 });
-        }
+export async function POST(request) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ message: "Invalid request body." }, { status: 400 });
+  }
 
-        const orderItems=[];
+  const parsed = orderSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { message: parsed.error.issues.map((i) => i.message).join(", ") },
+      { status: 400 }
+    );
+  }
 
-        for (const dish of dishes) {
-            const dishItem = await db.dish.findUnique({where: {id: dish.id}});
-            orderItems.push(dishItem);
-        
-        if(!dishItem || !dishItem.available){
-            return Response.json
-            ({message: `dish ${dish.id} is not available`}, { status: 400 });
-        }
-        const quantity = Number(dish.quantity);
-        if(!Number.isInteger(quantity) || quantity > dishItem.available){
-            return Response.json
-            ({message: `dish ${dish} invalid quantity`}, { status: 400 });
-        }
-        orderItems.push({
-        dishId:dishItem.id,
-        name:dishItem.name,
-        price:dishItem.price,
-        quantity:quantity,});
+  const { email, name, phone, dishes, notes, address } = parsed.data;
 
-        }
-        const totalPrice = orderItems.reduce((acc, dishItem) => acc + dishItem.price * dishItem.quantity, 0);
-        const order = await createOrder({
-            dishes: orderItems,
-            totalPrice: totalPrice,
-            currency: "ETB",
-        });
+  // Look up real dishes and prices on the server
+  const items = [];
+  let total = 0;
 
-        return Response.json({message: `order created successfully`}, { status: 201 });
+  for (const { id, quantity } of dishes) {
+    const dish = await getDish(id);
+    if (!dish || !dish.available) {
+      return NextResponse.json(
+        { message: `Dish ${id} is not available.` },
+        { status: 400 }
+      );
     }
-    catch (error) {
-        console.error(error);
-        return Response.json({message: "unable to create your order"}, { status: 500 });
-    }
+    items.push({
+      dishId: dish.id,
+      name: dish.name,
+      price: dish.price,
+      quantity,
+    });
+    total += dish.price * quantity;
+  }
 
+  const order = await createOrder({
+    customer: { email, name, phone, address },
+    items,
+    total,
+    notes,
+    currency: "ETB",
+  });
 
+  return NextResponse.json({ orderId: order.id }, { status: 201 });
 }
-
-

@@ -1,22 +1,17 @@
-'use client';
+import Link from 'next/link';
 
-import { useState } from 'react';
 
 function CatagoryFilter({ categories }) {
-    const [SelectedCategory, setSelectedCategory] = useState('All');
     return (
-        <div>
-            <h2>Filter by Category</h2>
+        
+        <nav className="flex flex-col gap-2">
             {categories.map((category) => (
-                <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    
-                >
+                <Link key={category} href={category === 'All' ? '/menu' : `/menu?category=${category}`} className="rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-slate-300 transition duration-200 hover:border-[#39ff88]/20 hover:bg-[#39ff88]/5 hover:text-[#39ff88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#39ff88]">
                     {category}
-                </button>
+                </Link>
             ))}
-        </div>
+        
+        </nav>
     );}
 
     export default CatagoryFilter;

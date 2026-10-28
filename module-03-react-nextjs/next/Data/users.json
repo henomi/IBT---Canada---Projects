@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "083d776b-1eb8-4bec-80b5-ea16ccb28060",
+      "name": "Hailemichael Tamirat",
+      "email": "hailemichaeltamirat@gmail.com",
+      "passwordHash": "$2b$12$a1yXO4UAJp7YISx2WcJrjeYt2wNoj6LXPDxg1XDqj4ofNXWH3Db.W",
+      "role": "admin"
+    },
+    {
+      "id": "23e3edf9-755d-49fd-8bf4-545d13bd607b",
+      "name": "Test Customer",
+      "email": "test@example.com",
+      "passwordHash": "$2b$12$Yul8dOCc399d0NNRLqf31.rewcynGS4aPoGc72CVJT0MVlmmiI.3u",
+      "role": "customer"
+    },
+    {
+      "id": "6fc6a404-fa56-4210-a4bc-90fbb154cffe",
+      "name": "alemu kebede",
+      "email": "alex@example.com",
+      "passwordHash": "$2b$12$R1mk2Fs0udiF2jNg.3sw6OEKlx/UFKBq1EsGG2fto7ds5Y/DZ3IVm",
+      "role": "customer"
+    }
+  ]
+}
