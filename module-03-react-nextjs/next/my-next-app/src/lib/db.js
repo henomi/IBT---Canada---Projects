@@ -4,7 +4,10 @@
  */
 
 // Mock dish records
-const mockDishes = [
+
+const globalForDb = globalThis;
+
+const mockDishes = (globalForDb.__mockDishes ??= [
   {
     id: "dish_1",
     name: "Doro Wat",
@@ -41,12 +44,12 @@ const mockDishes = [
     category: "Vegetarian",
     available: true,
   },
-];
+]);
 
-// export default mockDishes;
 
 // In-memory orders store
-const mockOrders = [];
+// const globalForDb = globalThis;
+// const mockOrders = (globalForDb.__mockOrders ??= []);
 
 // Mock authenticated user session
 const mockSessionUser = {
@@ -58,12 +61,59 @@ const mockSessionUser = {
 /**
  * ORM-style database query interface
  */
+
+
+const mockOrders = (globalForDb.__mockOrders ??= []);
+
 export const db = {
-  dish: {
-    findMany: async () => [...mockDishes],
-    findUnique: async ({ where }) =>
-      mockDishes.find((d) => d.id === where.id) || null,
+  
+dish: {
+  findMany: async () => [...mockDishes],
+
+  findUnique: async ({ where }) =>
+    mockDishes.find((dish) => dish.id === where.id) ?? null,
+
+  create: async ({ data }) => {
+    const dish = {
+      id: `dish_${crypto.randomUUID().slice(0, 8)}`,
+      currency: "ETB",
+      ...data,
+    };
+
+    mockDishes.push(dish);
+    return dish;
   },
+
+  update: async ({ where, data }) => {
+    const index = mockDishes.findIndex(
+      (dish) => dish.id === where.id
+    );
+
+    if (index === -1) return null;
+
+    mockDishes[index] = {
+      ...mockDishes[index],
+      ...data,
+    };
+
+    return mockDishes[index];
+  },
+
+  delete: async ({ where }) => {
+    const index = mockDishes.findIndex(
+      (dish) => dish.id === where.id
+    );
+
+    if (index === -1) return null;
+
+    const [deletedDish] = mockDishes.splice(index, 1);
+    return deletedDish;
+  },
+},
+
+
+
+
   order: {
     findMany: async () => [...mockOrders],
   },
@@ -82,7 +132,7 @@ export async function getDish(id) {
  */
 export async function createOrder(data) {
   const newOrder = {
-    id: `ord_${Math.floor(100 + Math.random() * 900)}`,
+    id:`order_${crypto.randomUUID().slice(0,8)}`,
     ...data,
     status: "PENDING",
     userId: mockSessionUser.id,
