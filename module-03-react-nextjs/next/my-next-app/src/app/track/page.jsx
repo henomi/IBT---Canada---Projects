@@ -1,5 +1,7 @@
 "use client";
 
+// import DeliveryMap from '@/components/Map/DeliveryMap'
+// import TrackMap from '@/components/Map/TrackMap'
 import dynamic from "next/dynamic";
 
 const DeliveryMap = dynamic(
@@ -18,6 +20,9 @@ export default function TrackPage() {
           Track Your Delivery
         </h1>
         <DeliveryMap />
+      </div>
+      <div>
+        {/* <TrackMap/> */}
       </div>
     </main>
   );
