@@ -11,6 +11,7 @@ const mockDishes = (globalForDb.__mockDishes ??= [
   {
     id: "dish_1",
     name: "Doro Wat",
+    image: "doro-wat.jpg",
     description: "Traditional spicy chicken stew served with injera and boiled egg.",
     price: 350,
     currency: "ETB",
@@ -20,6 +21,7 @@ const mockDishes = (globalForDb.__mockDishes ??= [
   {
     id: "dish_2",
     name: "Beyaynetu",
+    image: "beyaynet.jpg",
     description: "Assorted vegan fasting dishes served on injera.",
     price: 220,
     currency: "ETB",
@@ -29,6 +31,7 @@ const mockDishes = (globalForDb.__mockDishes ??= [
   {
     id: "dish_3",
     name: "Kitfo",
+    image: "kitfo.jpg",
     description: "Minced beef seasoned with mitmita and niter kibbeh.",
     price: 400,
     currency: "ETB",
@@ -38,6 +41,7 @@ const mockDishes = (globalForDb.__mockDishes ??= [
   {
     id: "dish_4",
     name: "Shiro Tegabeno",
+    image: "shiro.jpg",
     description: "Rich chickpea flour stew served bubbling hot in a clay pot.",
     price: 180,
     currency: "ETB",

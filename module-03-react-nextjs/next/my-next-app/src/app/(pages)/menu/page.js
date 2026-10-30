@@ -3,20 +3,16 @@ import React from 'react'
 import { Suspense } from 'react';
 import DishList from '@/components/Menu/DishList';
 import { db } from '@/lib/db';
-import CatagoryFilter from '@/components/Menu/CatagoryFilter';
+
 
 async function Menu({ searchParams }) {
   const { category = 'All' } = await searchParams;
   const allDishes = await db.dish.findMany();
-  // const categories = ['All', ...new Set(allDishes.map((dish) => dish.category))]
+  
   const dishes = category === 'All' ? allDishes : allDishes.filter((dish) => dish.category === category);
 
   return (
     <main className="min-h-screen bg-[#0b132b] px-4 py-8 text-white sm:px-6 sm:py-12 lg:px-10">
-      {/* <aside>
-        <h1>Categories</h1>
-        <CatagoryFilter categories={categories} />
-      </aside> */}
       <section className="mx-auto w-full max-w-7xl">
         <div className="mb-8 border-b border-white/10 pb-6 sm:mb-10 sm:pb-8">
           <p className="mb-3 text-xs font-bold tracking-[0.22em] text-[#39ff88] uppercase">
