@@ -5,13 +5,13 @@ export default function SignInPage() {
   return (
     <main className="min-h-screen bg-[#0b132b] text-white">
       <div className="grid min-h-screen lg:grid-cols-2">
-        {/* Left: restaurant branding */}
+        
         <section className="relative hidden overflow-hidden p-12 lg:flex lg:flex-col lg:justify-between xl:p-16">
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=85')",
+                "url('about.jpg')",
             }}
           />
 
@@ -50,7 +50,7 @@ export default function SignInPage() {
           </p>
         </section>
 
-        {/* Right: sign-in form */}
+        
         <section className="flex min-h-screen items-center justify-center px-5 py-10 sm:px-10 sm:py-12 lg:px-12">
           <div className="w-full max-w-md">
             <Link

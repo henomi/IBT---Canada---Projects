@@ -1,11 +1,17 @@
 "use client";
 
-// import DeliveryMap from '@/components/Map/DeliveryMap'
-// import TrackMap from '@/components/Map/TrackMap'
 import dynamic from "next/dynamic";
 
-const DeliveryMap = dynamic(
-  () => import("@/components/Map/DeliveryMap"),
+// const DeliveryMap = dynamic(
+//   () => import("@/components/Map/DeliveryMap"),
+//   {
+//     ssr: false,
+//     loading: () => <p>Loading delivery map...</p>,
+//   }
+// );
+
+const TrackMap = dynamic(
+  () => import("@/components/Map/TrackMap"),
   {
     ssr: false,
     loading: () => <p>Loading delivery map...</p>,
@@ -19,10 +25,10 @@ export default function TrackPage() {
         <h1 className="mb-6 text-3xl font-bold text-[#39ff88]">
           Track Your Delivery
         </h1>
-        <DeliveryMap />
+        {/* <DeliveryMap /> */}
       </div>
       <div>
-        {/* <TrackMap/> */}
+        <TrackMap/>
       </div>
     </main>
   );
