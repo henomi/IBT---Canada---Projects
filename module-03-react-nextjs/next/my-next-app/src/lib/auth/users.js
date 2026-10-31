@@ -1,15 +1,11 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
-const currentDirectory = path.dirname(
-  fileURLToPath(import.meta.url)
-);
-
-const usersFile = path.resolve(
-  currentDirectory,
-  "../../../../data/users.json"
+const usersFile = path.join(
+  process.cwd(),
+  "data",
+  "users.json"
 );
 
 export async function getUsers() {

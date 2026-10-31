@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-// import Link from "next/link";
+import Link from "next/link";
 
 async function OrderHistory() {
   const orders = await db.order.findMany();
@@ -49,9 +49,12 @@ async function OrderHistory() {
             <p className="mb-2 break-words text-sm text-slate-400 sm:text-base">
               Created At: {order.createdAt}
             </p>
-            <p className="break-words text-sm text-slate-400 sm:text-base">
+            {/* <p className="break-words text-sm text-slate-400 sm:text-base">
               Updated At: {order.updatedAt}
-            </p>
+            </p> */}
+            <Link href="/track">
+            <p className="mb-3 text-lg font-bold text-[#39ff88] hover:text-white hover:shadow-xl sm:p-6">Track your meal</p>
+            </Link>
           </li>
         ))}
       </ul>

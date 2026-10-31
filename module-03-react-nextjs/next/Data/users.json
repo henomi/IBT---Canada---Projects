@@ -20,6 +20,20 @@
       "email": "alex@example.com",
       "passwordHash": "$2b$12$R1mk2Fs0udiF2jNg.3sw6OEKlx/UFKBq1EsGG2fto7ds5Y/DZ3IVm",
       "role": "customer"
+    },
+    {
+      "id": "995c1704-93e5-4ea6-9910-833cc4a6dd85",
+      "name": "abebe kebede",
+      "email": "abebe@example.com",
+      "passwordHash": "$2b$12$ZBRRkxKGxV4X73EZR2Twu.YyNZYgs/6vytSP.qlZsWGXjUdAQ7McW",
+      "role": "customer"
+    },
+    {
+      "id": "155704f4-5f9d-4208-a8a9-7ce97097d630",
+      "name": "hh",
+      "email": "hh@example.com",
+      "passwordHash": "$2b$12$73jwrp49.PrT4aVn84jkfuhBUayZIR1dlk4YsDgmfPkSujElCAo8W",
+      "role": "customer"
     }
   ]
 }

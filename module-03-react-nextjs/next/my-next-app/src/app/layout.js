@@ -3,17 +3,14 @@ import "./globals.css";
 import { CartProvider } from "@/Context/cartContext";
 
 export const metadata = {
-  logo:"🍴",
-  title: "Addis Eatery",
-  description: "A taste of Ethiopia, tradition on every plate.",
   openGraph: {
     type: "website",
-    url: "https://adis-eatery.vercel.app/",
+    url: "https://ibt-canada-projects-als7.vercel.app/",
     title: "Addis Eatery",
     description: "A taste of Ethiopia, tradition on every plate.",
     images: [
       {
-        url: "https://adis-eatery.vercel.app/images/adis-eatery-banner.png",
+        url: "https://ibt-canada-projects-als7.vercel.app/gored-gored.jpg",
         width: 1200,
         height: 630,
         alt: "Adis Eatery",

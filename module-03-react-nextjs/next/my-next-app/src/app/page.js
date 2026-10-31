@@ -10,7 +10,7 @@ const dishes = [
     description: "Slow-cooked chicken stew, Ethiopian spices, and a boiled egg.",
     price: 350,
     image:
-      "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=85",
+      "dulet.jpg",
   },
   {
     id: "dish_2",
@@ -19,7 +19,7 @@ const dishes = [
     description: "A colorful combination of traditional plant-based favorites.",
     price: 220,
     image:
-      "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
+      "dulet.jpg",
   },
   {
     id: "dish_3",
@@ -28,7 +28,7 @@ const dishes = [
     description: "A beloved Ethiopian classic, rich in flavor and tradition.",
     price: 400,
     image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
+      "dulet.jpg",
   },
   {
     id: "dish_4",
@@ -37,7 +37,7 @@ const dishes = [
     description: "Comforting chickpea stew, prepared with warming spices.",
     price: 180,
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+      "dulet.jpg",
   },
 ];
 
@@ -244,7 +244,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#111d3a] p-2 shadow-2xl shadow-black/40">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
                 <img
-                  src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=90"
+                  src="doro-wat.jpg"
                   alt="A colorful, freshly prepared meal"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   fetchPriority="high"
